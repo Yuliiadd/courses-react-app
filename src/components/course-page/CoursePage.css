@@ -1,0 +1,18 @@
+.course-container {
+  display: flex;
+  padding-top: 1rem;
+}
+
+.video-course {
+  border: 1px solid red;
+  flex: auto;
+}
+
+.course-video-list {
+  border: 1px solid green;
+  width: 20%;
+}
+
+.video {
+  aspect-ratio: 16/9;
+}
