@@ -12,6 +12,7 @@ function App() {
   const postsPerPage = 10;
   const lastPostIndex = currentPage * postsPerPage;
   const firstPostIndex = lastPostIndex - postsPerPage;
+  const [currentCourse, setCurrentCourse] = useState(null);
 
   useEffect(() => {
     async function getData() {
@@ -43,7 +44,6 @@ function App() {
     getData();
   }, []);
 
-  // console.log(courses.length);
   return (
     <div className="App">
       <Header></Header>
@@ -59,13 +59,14 @@ function App() {
                 postsPerPage={postsPerPage}
                 setCurrentPage={setCurrentPage}
                 currentPage={currentPage}
+                setCurrentCourse={setCurrentCourse}
               ></MainPage>
             }
           ></Route>
           <Route
             exact
             path="/course"
-            element={<CoursePage></CoursePage>}
+            element={<CoursePage currentCourse={currentCourse}></CoursePage>}
           ></Route>
         </Routes>
       </Router>

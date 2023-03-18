@@ -2,7 +2,7 @@ import React from "react";
 import "./CourseItem.css";
 import { Link } from "react-router-dom";
 
-function CourseItem({ course }) {
+function CourseItem({ course, onClick }) {
   const skills = course.meta.skills?.slice(0, 2).map((skill, index) => (
     <span className="skill" key={index}>
       {skill}
@@ -11,7 +11,7 @@ function CourseItem({ course }) {
 
   return (
     <Link to="/course" style={{ textDecoration: "none", color: "white" }}>
-      <div className="course-item">
+      <div className="course-item" onClick={onClick}>
         <div className="course-preview">
           <img
             className="course-preview-img"

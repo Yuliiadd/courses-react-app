@@ -1,4 +1,4 @@
-import React from "react";
+import { React } from "react";
 import "./MainPage.css";
 import CourseItem from "./course-item/CourseItem";
 import Pagination from "../Pagination";
@@ -10,8 +10,10 @@ function MainPage({
   postsPerPage,
   setCurrentPage,
   currentPage,
+  setCurrentCourse,
 }) {
   async function fetchCourse(id) {
+    setCurrentCourse(null);
     await fetch(TOKEN_URL, requestOptions)
       .then((response) => response.text())
       .then((result) => {
@@ -30,7 +32,8 @@ function MainPage({
         fetch(COURSES_URL + "/" + id, requestOptionsCourses)
           .then((response) => response.json())
           .then((result) => {
-            console.log(result);
+            // console.log(result);
+            setCurrentCourse(result);
           })
           .catch((error) => console.log("error", error));
       })
@@ -41,9 +44,7 @@ function MainPage({
     <CourseItem
       course={item}
       key={item.id}
-      onClick={async () => {
-        await fetchCourse("352be3c6-848b-4c19-9e7d-54fe68fef183");
-      }}
+      onClick={() => fetchCourse(item.id)}
     ></CourseItem>
   ));
 
